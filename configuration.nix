@@ -46,6 +46,7 @@
       "github"          # GitHub Desktop
       "helium-browser"
       "slack"
+      "shottr"
       "abue-ammar/tinycast/tinycast"
     ];
   };
