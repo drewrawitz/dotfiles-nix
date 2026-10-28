@@ -19,12 +19,14 @@
       InitialKeyRepeat = 15;  # short delay before repeat
       _HIHideMenuBar = true;  # auto-hide the menu bar
       AppleShowAllExtensions = true;
+      "com.apple.swipescrolldirection" = false;  # Apple's "Natural scrolling" off: swipe down scrolls down
     };
     dock.autohide = true;
     dock.wvous-tr-corner = 4;              # hot corner: top right shows desktop
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
     finder.CreateDesktop = false;          # clean desktop
     trackpad.Clicking = true;              # tap to click
+    trackpad.TrackpadRightClick = true;    # two-finger tap to right click
   };
   nix-homebrew = {
     enable = true;
