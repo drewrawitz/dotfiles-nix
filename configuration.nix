@@ -42,7 +42,6 @@
     ];
     casks = [
       "wezterm"
-      "claude-code"
       "1password"
       "github"          # GitHub Desktop
       "helium-browser"

@@ -23,6 +23,15 @@ in
   ];
   fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
+  home.sessionPath = [ "$HOME/.local/bin" ];
+
+  # Claude Code's native installer self-updates, so only run it when claude is missing.
+  home.activation.installClaudeCode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if [ ! -x "$HOME/.local/bin/claude" ]; then
+      run /bin/bash -c 'PATH=/usr/bin:/bin:/usr/sbin:$PATH; curl -fsSL https://claude.ai/install.sh | bash' \
+        || echo "Claude Code install failed; run: curl -fsSL https://claude.ai/install.sh | bash"
+    fi
+  '';
 
   programs.zsh = {
     enable = true;
