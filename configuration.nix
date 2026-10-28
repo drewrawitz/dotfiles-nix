@@ -22,6 +22,7 @@
       "com.apple.swipescrolldirection" = false;  # Apple's "Natural scrolling" off: swipe down scrolls down
     };
     dock.autohide = true;
+    dock.show-recents = false;             # no suggested/recent apps in the Dock
     dock.wvous-tr-corner = 4;              # hot corner: top right shows desktop
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
     finder.CreateDesktop = false;          # clean desktop
