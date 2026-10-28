@@ -34,12 +34,20 @@
     onActivation.cleanup = "zap";  # remove anything not listed here
     onActivation.autoUpdate = true;
     onActivation.extraFlags = [ "--force" ];
+    taps = [
+      "abue-ammar/tinycast"
+    ];
     brews = [
       "herdr"
     ];
     casks = [
       "wezterm"
       "claude-code"
+      "1password"
+      "github"          # GitHub Desktop
+      "helium-browser"
+      "slack"
+      "abue-ammar/tinycast/tinycast"
     ];
   };
 }

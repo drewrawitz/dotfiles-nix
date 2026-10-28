@@ -1,4 +1,4 @@
-{ config, pkgs, user, ... }:
+{ config, lib, pkgs, user, ... }:
 
 let
   dotfiles = "${config.home.homeDirectory}/.dotfiles";
@@ -16,6 +16,8 @@ in
     jq        # json on the command line
     lazygit
     neovim
+    tmux
+    gh        # github cli
     # the font everything renders in
     nerd-fonts.hack
   ];
@@ -26,27 +28,30 @@ in
     enable = true;
     autosuggestion.enable = true;      # ghost text from history
     syntaxHighlighting.enable = true;  # commands turn green when valid
-    initContent = ''
-      bindkey '^f' autosuggest-accept
-    '';
+    plugins = [{
+      name = "powerlevel10k";
+      src = pkgs.zsh-powerlevel10k;
+      file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    }];
+    initContent = lib.mkMerge [
+      # p10k instant prompt has to run before everything else in .zshrc
+      (lib.mkBefore ''
+        if [[ -r "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh" ]]; then
+          source "''${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-''${(%):-%n}.zsh"
+        fi
+      '')
+      ''
+        bindkey '^f' autosuggest-accept
+        [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+      ''
+    ];
     shellAliases = {
       ".." = "cd ..";
       gst = "git status";
     };
   };
 
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-      format = "$directory$git_branch$git_status$cmd_duration$line_break$character";
-      character = {
-        success_symbol = "[❯](purple)";
-        error_symbol = "[❯](red)";
-      };
-      cmd_duration.format = "[$duration]($style) ";
-    };
-  };
+  programs.zoxide.enable = true;  # `z` to jump to frecent dirs
 
 	programs.git = {
 		enable = true;
@@ -61,6 +66,8 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+  home.file.".tmux.conf".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.tmux.conf";
   home.file.".config/herdr".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr";
   home.file.".claude/settings.json".source =
