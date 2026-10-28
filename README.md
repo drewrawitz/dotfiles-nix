@@ -65,6 +65,18 @@ Change the host label or CPU architecture if needed, and read the Homebrew clean
 
 After that, `darwin-rebuild` exists and you're on the normal workflow below.
 
+### After the first switch
+
+These need a human, so the config can't do them:
+
+- Set Helium as the default browser (System Settings → Desktop & Dock → Default web browser). macOS requires a confirmation click.
+- `gh auth login`, and let it set up git to use your GitHub login.
+- `fnm install --lts` for a default Node.
+- Open a new shell and run through the powerlevel10k wizard (or `p10k configure`).
+- Import your Raycast `.rayconfig` export into Tinycast, then enable the extensions you use.
+- Enter the Shottr license.
+- Sign into 1Password, Slack and GitHub Desktop.
+
 ### Validate without applying
 
 Once Nix is installed (`bootstrap.sh` step 1 handles that), you can check that the config builds without touching your system - handy when you have edited something:
