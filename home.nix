@@ -18,6 +18,7 @@ in
     neovim
     tmux
     gh        # github cli
+    fnm       # node version manager
     # the font everything renders in
     nerd-fonts.hack
   ];
@@ -52,6 +53,7 @@ in
       ''
         bindkey '^f' autosuggest-accept
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+        eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"
       ''
     ];
     shellAliases = {
