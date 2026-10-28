@@ -21,6 +21,7 @@
       AppleShowAllExtensions = true;
     };
     dock.autohide = true;
+    dock.wvous-tr-corner = 4;              # hot corner: top right shows desktop
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
     finder.CreateDesktop = false;          # clean desktop
     trackpad.Clicking = true;              # tap to click
