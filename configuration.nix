@@ -38,7 +38,6 @@
       "abue-ammar/tinycast"
     ];
     brews = [
-      "herdr"
       "mole"            # mac cleaner (nixpkgs' "mole" is an unrelated ssh tool)
     ];
     casks = [

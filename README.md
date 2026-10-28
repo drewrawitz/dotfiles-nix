@@ -117,10 +117,6 @@ That means every time you switch, Homebrew removes any package or cask on your m
 If you already have Homebrew stuff installed that isn't in that list, the first switch will uninstall it.
 Read through `brews` and `casks` before you run `bootstrap.sh` or `rebuild.sh` for the first time, and add anything you want to keep.
 
-**About `herdr`:** it's in the `brews` list.
-It's a real public Homebrew formula (`brew info herdr` finds it in homebrew-core, no tap needed), so it will install fine.
-If you don't use it, just remove it from `brews` in your copy.
-
 **Heads-up:**
 
 - `home/AGENTS.md` is my personal agent policy, and `home.nix` installs it for Claude, Codex, and opencode.
