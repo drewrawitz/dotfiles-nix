@@ -28,6 +28,18 @@
     trackpad.Clicking = true;              # tap to click
     trackpad.TrackpadRightClick = true;    # two-finger tap to right click
   };
+  # Mission Control mouse shortcuts: button 5 = Mission Control (id 38), button 4 = Application windows (id 39).
+  # -dict-add merges into the existing hotkeys, so shortcuts set in System Settings survive.
+  system.activationScripts.postActivation.text =
+    let
+      button = mask: "<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>button</string><key>parameters</key><array><integer>${toString mask}</integer><integer>${toString mask}</integer><integer>0</integer></array></dict></dict>";
+    in ''
+      sudo -u ${user} defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add \
+        38 '${button 16}' \
+        39 '${button 8}'
+      sudo -u ${user} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+    '';
+
   nix-homebrew = {
     enable = true;
     inherit user;
