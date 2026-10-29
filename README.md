@@ -25,7 +25,8 @@ Running the switch builds:
 
 - System settings (dark mode, key repeat, dock, Finder, trackpad)
 - Homebrew apps (casks and CLI tools)
-- Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tmux, zoxide, gh, fnm, Hack Nerd Font)
+- Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tmux, zoxide, gh, fnm, pnpm, Hack Nerd Font)
+- Node LTS via fnm as the default Node, if none is set yet
 - Shell (zsh, aliases, powerlevel10k prompt)
 - Editor (Neovim config with the rose-pine moon theme)
 - Terminal (WezTerm config with the rose-pine moon theme and dimmed unfocused windows)
@@ -71,7 +72,6 @@ These need a human, so the config can't do them:
 
 - Set Helium as the default browser (System Settings → Desktop & Dock → Default web browser). macOS requires a confirmation click.
 - `gh auth login`, and let it set up git to use your GitHub login.
-- `fnm install --lts` for a default Node.
 - Open a new shell and run through the powerlevel10k wizard (or `p10k configure`).
 - Import your Raycast `.rayconfig` export into Tinycast, then enable the extensions you use.
 - Enter the Shottr license.

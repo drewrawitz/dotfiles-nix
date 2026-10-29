@@ -19,6 +19,7 @@ in
     tmux
     gh        # github cli
     fnm       # node version manager
+    pnpm      # node package manager
     # the font everything renders in
     nerd-fonts.hack
   ];
@@ -31,6 +32,14 @@ in
     if [ ! -x "$HOME/.local/bin/claude" ]; then
       run /bin/bash -c 'PATH=/usr/bin:/bin:/usr/sbin:$PATH; curl -fsSL https://claude.ai/install.sh | bash' \
         || echo "Claude Code install failed; run: curl -fsSL https://claude.ai/install.sh | bash"
+    fi
+  '';
+
+  # Give a fresh machine a default Node; after that, fnm owns which versions are installed.
+  home.activation.installDefaultNode = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    if ! ${pkgs.fnm}/bin/fnm exec --using=default true >/dev/null 2>&1; then
+      { run ${pkgs.fnm}/bin/fnm install --lts && run ${pkgs.fnm}/bin/fnm default lts-latest; } \
+        || echo "Default Node install failed; run: fnm install --lts && fnm default lts-latest"
     fi
   '';
 
@@ -53,7 +62,7 @@ in
       ''
         bindkey '^f' autosuggest-accept
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-        eval "$(fnm env --use-on-cd --version-file-strategy=recursive --corepack-enabled --shell zsh)"
+        eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
       ''
     ];
     shellAliases = {
