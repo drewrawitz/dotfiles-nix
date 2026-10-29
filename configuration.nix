@@ -17,7 +17,7 @@
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 2;          # fast key repeat
       InitialKeyRepeat = 15;  # short delay before repeat
-      _HIHideMenuBar = true;  # auto-hide the menu bar
+      _HIHideMenuBar = false;  # menu bar always visible (macOS still hides it in full screen)
       AppleShowAllExtensions = true;
       "com.apple.swipescrolldirection" = false;  # Apple's "Natural scrolling" off: swipe down scrolls down
     };
@@ -42,6 +42,10 @@
         39 '${button 8}' \
         64 '${spotlightOff}'
       sudo -u ${user} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+      # Same notification System Settings posts, so a _HIHideMenuBar change applies without logging out.
+      launchctl asuser "$(id -u -- ${user})" sudo --user=${user} -- /usr/bin/osascript -l JavaScript -e \
+        'ObjC.import("Foundation"); $.NSDistributedNotificationCenter.defaultCenter.postNotificationNameObjectUserInfoDeliverImmediately("AppleInterfaceMenuBarHidingChangedNotification", $(), $(), true)' \
+        >/dev/null
     '';
 
   system.keyboard = {
