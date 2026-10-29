@@ -63,10 +63,12 @@ in
         bindkey '^f' autosuggest-accept
         [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
         eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
+        take() { mkdir -p "$1" && cd "$1"; }
       ''
     ];
     shellAliases = {
       ".." = "cd ..";
+      c = "clear";
       gst = "git status";
     };
   };
