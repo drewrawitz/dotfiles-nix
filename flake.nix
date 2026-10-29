@@ -11,7 +11,9 @@
     home-manager.url = "github:nix-community/home-manager/release-26.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-homebrew.url = "github:zhaofengli/nix-homebrew";
+    # Pinned to a commit that ships Homebrew 7.0.4; the older lock had 6.0.1, which rejects
+    # newer casks (e.g. tinycast's `{{appdir}}` install step). Nix re-locks this on the next build.
+    nix-homebrew.url = "github:zhaofengli/nix-homebrew/c11cccfdd36dd69b5323d70d354b2853379c2426";
   };
 
   outputs = inputs@{ self, nix-darwin, nix-homebrew, home-manager, nixpkgs }:
