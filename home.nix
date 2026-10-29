@@ -88,4 +88,23 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
+
+  # 1Password only installs its native messaging manifest for browsers it knows,
+  # so Helium needs a copy or the extension can't reach the desktop app.
+  # Helium also still has to be added under 1Password > Settings > Browser.
+  home.file."Library/Application Support/net.imput.helium/NativeMessagingHosts/com.1password.1password.json".text =
+    builtins.toJSON {
+      name = "com.1password.1password";
+      description = "1Password BrowserSupport";
+      path = "/Applications/1Password.app/Contents/Library/LoginItems/1Password Browser Helper.app/Contents/MacOS/1Password-BrowserSupport";
+      type = "stdio";
+      allowed_origins = [
+        "chrome-extension://hjlinigoblmkhjejkmbegnoaljkphmgo/"
+        "chrome-extension://bkpbhnjcbehoklfkljkkbbmipaphipgl/"
+        "chrome-extension://gejiddohjgogedgjnonbofjigllpkmbf/"
+        "chrome-extension://khgocmkkpikpnmmkgmdnfckapcdkgfaf/"
+        "chrome-extension://aeblfdkhhhdcdjpifhhbdiojplfjncoa/"
+        "chrome-extension://dppgmdbiimibapkepcbdbmkaabgiofem/"
+      ];
+    };
 }
