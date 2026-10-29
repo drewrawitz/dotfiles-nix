@@ -60,10 +60,10 @@ Change the host label or CPU architecture if needed, and read the Homebrew clean
 2. Symlinks this repo to `~/.dotfiles`.
    This has to happen before the first build, because `home.nix` points at config files through `~/.dotfiles`.
 3. Checks the `user` configured in `flake.nix` against your actual macOS username, and offers to fix it for you if they differ.
-4. Runs the first `darwin-rebuild switch`.
-   It fetches the `darwin-rebuild` tool from the nix-darwin 26.05 release branch, then applies this repo's locked flake config.
+4. Runs `rebuild.sh` for the first switch.
+   It builds this repo's locked flake config as you, then activates it as root with the `darwin-rebuild` from that build.
 
-After that, `darwin-rebuild` exists and you're on the normal workflow below.
+After that, you're on the normal workflow below.
 
 ### After the first switch
 
@@ -76,6 +76,7 @@ These need a human, so the config can't do them:
 - Import your Raycast `.rayconfig` export into Tinycast, then enable the extensions you use.
 - Enter the Shottr license.
 - Sign into 1Password, Slack and GitHub Desktop.
+- In 1Password → Settings → Browser, use Add Browser to allow Helium, or the 1Password extension can't connect to the app.
 
 ### Validate without applying
 
@@ -106,8 +107,8 @@ If you clone it, review these before you run `bootstrap.sh`:
 
 - **Username**: run `./bootstrap.sh` (it detects your macOS username and offers to set it) OR change the single `user = "kunchen"` line in `flake.nix`.
   Everything else (`configuration.nix`, `home.nix`, home directory paths) is threaded from that one variable.
-- **Host label** `"mac"`, in three places: `flake.nix` (the `darwinConfigurations."mac"` name), `rebuild.sh:5` (the `#mac` at the end of the flake reference), and `bootstrap.sh`'s first-switch command (also `#mac`).
-  All three have to match.
+- **Host label** `"mac"`, in two places: `flake.nix` (the `darwinConfigurations."mac"` name) and `rebuild.sh` (the `#darwinConfigurations.mac.system` flake reference).
+  Both have to match.
 - **CPU architecture**, `hostPlatform` in `configuration.nix` (see Prerequisites above).
 
 **Git identity:** this config deliberately does not set your git name or email.
