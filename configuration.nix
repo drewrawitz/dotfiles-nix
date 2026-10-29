@@ -22,6 +22,8 @@
       "com.apple.swipescrolldirection" = false;  # Apple's "Natural scrolling" off: swipe down scrolls down
     };
     dock.autohide = true;
+    dock.magnification = true;             # icons grow on hover
+    dock.largesize = 88;                   # hover size (16-128); unset means 128, which is "Large"
     dock.show-recents = false;             # no suggested/recent apps in the Dock
     dock.wvous-tr-corner = 4;              # hot corner: top right shows desktop
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
