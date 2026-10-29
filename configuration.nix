@@ -76,6 +76,7 @@
       "github"          # GitHub Desktop
       "helium-browser"
       "slack"
+      "claude"          # Claude desktop app
       "shottr"
       "abue-ammar/tinycast/tinycast"
     ];
