@@ -18,6 +18,7 @@ in
     neovim
     tmux
     gh        # github cli
+    google-cloud-sdk  # gcloud, bundles its own python
     fnm       # node version manager
     pnpm      # node package manager
     # the font everything renders in
