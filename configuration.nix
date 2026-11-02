@@ -80,6 +80,7 @@
       "slack"
       "claude"          # Claude desktop app
       "shottr"
+      "temurin@17"      # Eclipse Temurin JDK 17
       "abue-ammar/tinycast/tinycast"
     ];
   };
