@@ -17,6 +17,7 @@
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 2;          # fast key repeat
       InitialKeyRepeat = 15;  # short delay before repeat
+      ApplePressAndHoldEnabled = false;  # holding a key repeats it instead of showing the accent picker
       _HIHideMenuBar = false;  # menu bar always visible (macOS still hides it in full screen)
       AppleShowAllExtensions = true;
       "com.apple.swipescrolldirection" = false;  # Apple's "Natural scrolling" off: swipe down scrolls down
