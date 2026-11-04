@@ -69,6 +69,7 @@
     onActivation.extraFlags = [ "--force" ];
     taps = [
       "abue-ammar/tinycast"
+      "anomalyco/tap"
     ];
     brews = [
       "mole"            # mac cleaner (nixpkgs' "mole" is an unrelated ssh tool)
@@ -83,6 +84,7 @@
       "shottr"
       "temurin@17"      # Eclipse Temurin JDK 17
       "abue-ammar/tinycast/tinycast"
+      "anomalyco/tap/hex"
     ];
   };
 }
