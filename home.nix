@@ -18,6 +18,7 @@ in
     neovim
     tmux
     gh        # github cli
+    git-lfs   # the filter.lfs config in programs.git calls it from PATH
     google-cloud-sdk  # gcloud, bundles its own python
     fnm       # node version manager
     pnpm      # node package manager
@@ -81,6 +82,15 @@ in
 		settings.user = {
 			name = "Drew Rawitz";
 			email = "email@drewrawitz.com";
+		};
+		# GitHub Desktop runs `git lfs install` on launch, which tries to write these into
+		# this read-only file unless they already match exactly. So they are plain
+		# `git-lfs ...` commands rather than lfs.enable's /nix/store paths.
+		settings.filter.lfs = {
+			clean = "git-lfs clean -- %f";
+			smudge = "git-lfs smudge -- %f";
+			process = "git-lfs filter-process";
+			required = true;
 		};
 	};
 
