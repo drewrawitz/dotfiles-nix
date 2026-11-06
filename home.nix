@@ -5,6 +5,8 @@ let
 in
 
 {
+  imports = [ ./helium.nix ];
+
   home.username = user;
   home.homeDirectory = "/Users/${user}";
   home.stateVersion = "24.11";
@@ -104,6 +106,9 @@ in
   # even if it replaces the file rather than writing through a file symlink.
   home.file.".config/tinycast".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/tinycast";
+  # The wizard resolves this symlink before rewriting, so `p10k configure` saves into the repo.
+  home.file.".p10k.zsh".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.p10k.zsh";
   home.file.".tmux.conf".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.tmux.conf";
   home.file.".claude/settings.json".source =
@@ -115,23 +120,4 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".config/opencode/AGENTS.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
-
-  # 1Password only installs its native messaging manifest for browsers it knows,
-  # so Helium needs a copy or the extension can't reach the desktop app.
-  # Helium also still has to be added under 1Password > Settings > Browser.
-  home.file."Library/Application Support/net.imput.helium/NativeMessagingHosts/com.1password.1password.json".text =
-    builtins.toJSON {
-      name = "com.1password.1password";
-      description = "1Password BrowserSupport";
-      path = "/Applications/1Password.app/Contents/Library/LoginItems/1Password Browser Helper.app/Contents/MacOS/1Password-BrowserSupport";
-      type = "stdio";
-      allowed_origins = [
-        "chrome-extension://hjlinigoblmkhjejkmbegnoaljkphmgo/"
-        "chrome-extension://bkpbhnjcbehoklfkljkkbbmipaphipgl/"
-        "chrome-extension://gejiddohjgogedgjnonbofjigllpkmbf/"
-        "chrome-extension://khgocmkkpikpnmmkgmdnfckapcdkgfaf/"
-        "chrome-extension://aeblfdkhhhdcdjpifhhbdiojplfjncoa/"
-        "chrome-extension://dppgmdbiimibapkepcbdbmkaabgiofem/"
-      ];
-    };
 }

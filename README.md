@@ -72,7 +72,7 @@ These need a human, so the config can't do them:
 
 - Set Helium as the default browser (System Settings → Desktop & Dock → Default web browser). macOS requires a confirmation click.
 - `gh auth login`, and let it set up git to use your GitHub login.
-- Open a new shell and run through the powerlevel10k wizard (or `p10k configure`).
+- Open Helium and click Enable on each extension it says was added. Chromium-based browsers never turn on an extension installed from outside the browser until you approve it.
 - Import your Raycast `.rayconfig` export into Tinycast, then enable the extensions you use.
 - Enter the Shottr license.
 - Sign into 1Password, Slack and GitHub Desktop.
@@ -143,6 +143,7 @@ Read through `brews` and `casks` before you run `bootstrap.sh` or `rebuild.sh` f
   Wires up nixpkgs, nix-darwin, home-manager, and nix-homebrew, and declares the `mac` machine.
 - `configuration.nix` - system-level config: macOS defaults, Homebrew.
 - `home.nix` - user-level config: shell, packages, prompt, and the symlinks described below.
+- `helium.nix` - Helium's extensions, and the settings a fresh Helium profile starts with.
 - `rebuild.sh` - re-applies the config after the first switch.
   Run this every time you make a change.
 - `home/` - the actual config files that get symlinked into place; the section below explains the symlink model.
@@ -159,6 +160,12 @@ The first time you launch `nvim`, [LazyVim](https://www.lazyvim.org) clones its 
 That needs network access once; after that it's offline.
 Put your own plugins and overrides in `home/.config/nvim/lua/plugins/`.
 Neovim and WezTerm both use the Catppuccin Mocha theme.
+
+The powerlevel10k prompt lives in `home/.p10k.zsh`, so `p10k configure` saves straight into the repo.
+
+Helium settings are only seeded: `helium.nix` writes them into a brand-new profile, and after that the browser owns them.
+To carry a settings change to future Macs, update `helium.nix` by hand.
+Extensions are different - add a Web Store id to `helium.nix` and Helium installs it on its next launch, even on an existing profile.
 
 ## License
 
