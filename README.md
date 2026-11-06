@@ -28,8 +28,8 @@ Running the switch builds:
 - Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tree-sitter, tmux, zoxide, gh, fnm, pnpm, Hack Nerd Font)
 - Node LTS via fnm as the default Node, if none is set yet
 - Shell (zsh, aliases, powerlevel10k prompt)
-- Editor (Neovim running the [LazyVim](https://www.lazyvim.org) starter)
-- Terminal (WezTerm config with the rose-pine moon theme and dimmed unfocused windows)
+- Editor (Neovim running the [LazyVim](https://www.lazyvim.org) starter with the Catppuccin Mocha theme)
+- Terminal (WezTerm config with the Catppuccin Mocha theme and dimmed unfocused windows)
 - Agent configs (Claude, Codex, opencode all share one AGENTS.md)
 
 ## Prerequisites
@@ -158,7 +158,7 @@ You only run `./rebuild.sh` when you change something that isn't just a symlinke
 The first time you launch `nvim`, [LazyVim](https://www.lazyvim.org) clones its plugins from GitHub, compiles treesitter parsers with the `tree-sitter` CLI, and installs language servers through Mason.
 That needs network access once; after that it's offline.
 Put your own plugins and overrides in `home/.config/nvim/lua/plugins/`.
-WezTerm uses the rose-pine moon theme.
+Neovim and WezTerm both use the Catppuccin Mocha theme.
 
 ## License
 
