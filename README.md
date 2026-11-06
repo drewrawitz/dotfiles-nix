@@ -25,10 +25,10 @@ Running the switch builds:
 
 - System settings (dark mode, key repeat, dock, Finder, trackpad)
 - Homebrew apps (casks and CLI tools)
-- Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tmux, zoxide, gh, fnm, pnpm, Hack Nerd Font)
+- Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tree-sitter, tmux, zoxide, gh, fnm, pnpm, Hack Nerd Font)
 - Node LTS via fnm as the default Node, if none is set yet
 - Shell (zsh, aliases, powerlevel10k prompt)
-- Editor (Neovim config with the rose-pine moon theme)
+- Editor (Neovim running the [LazyVim](https://www.lazyvim.org) starter)
 - Terminal (WezTerm config with the rose-pine moon theme and dimmed unfocused windows)
 - Agent configs (Claude, Codex, opencode all share one AGENTS.md)
 
@@ -155,10 +155,10 @@ You only run `./rebuild.sh` when you change something that isn't just a symlinke
 
 ## Notes
 
-The first time you launch `nvim`, it bootstraps [lazy.nvim](https://github.com/folke/lazy.nvim) by cloning plugins from GitHub.
+The first time you launch `nvim`, [LazyVim](https://www.lazyvim.org) clones its plugins from GitHub, compiles treesitter parsers with the `tree-sitter` CLI, and installs language servers through Mason.
 That needs network access once; after that it's offline.
-Neovim and WezTerm both use the rose-pine moon theme.
-Neovim keeps italics off and uses a transparent background on macOS, Windows, and WSL so it matches the terminal setup.
+Put your own plugins and overrides in `home/.config/nvim/lua/plugins/`.
+WezTerm uses the rose-pine moon theme.
 
 ## License
 

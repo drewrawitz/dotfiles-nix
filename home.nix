@@ -16,6 +16,7 @@ in
     jq        # json on the command line
     lazygit
     neovim
+    tree-sitter  # LazyVim compiles treesitter parsers with it
     tmux
     gh        # github cli
     git-lfs   # the filter.lfs config in programs.git calls it from PATH
