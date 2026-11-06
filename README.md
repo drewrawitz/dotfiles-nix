@@ -144,7 +144,7 @@ Read through `brews` and `casks` before you run `bootstrap.sh` or `rebuild.sh` f
   Wires up nixpkgs, nix-darwin, home-manager, and nix-homebrew, and declares the `mac` machine.
 - `configuration.nix` - system-level config: macOS defaults, Homebrew.
 - `home.nix` - user-level config: shell, packages, prompt, and the symlinks described below.
-- `helium.nix` - Helium's extensions, and the settings a fresh Helium profile starts with.
+- `helium.nix` - Helium's extensions and settings.
 - `rebuild.sh` - re-applies the config after the first switch.
   Run this every time you make a change.
 - `home/` - the actual config files that get symlinked into place; the section below explains the symlink model.
@@ -164,9 +164,9 @@ Neovim and WezTerm both use the Catppuccin Mocha theme.
 
 The powerlevel10k prompt lives in `home/.p10k.zsh`, so `p10k configure` saves straight into the repo.
 
-Helium settings are only seeded: `helium.nix` writes them into a brand-new profile, and after that the browser owns them.
-To carry a settings change to future Macs, update `helium.nix` by hand.
-Extensions are different - add a Web Store id to `helium.nix` and Helium installs it on its next launch, even on an existing profile.
+Every rebuild merges the Helium settings in `helium.nix` into Helium's profile, so they win over changes made in the browser.
+Quit Helium before rebuilding: it rewrites its settings when it quits, so the rebuild skips them and warns you if Helium is open.
+Add a Web Store id to `helium.nix` and Helium installs that extension on its next launch.
 
 ## License
 

@@ -8,8 +8,8 @@ let
     aeblfdkhhhdcdjpifhhbdiojplfjncoa = "1Password";
   };
 
-  # Written once into a fresh Helium profile, so a new Mac starts with my layout.
-  # Helium owns the file after that; changes made in the browser don't flow back here.
+  # Merged into Helium's profile on every rebuild, so these win over changes made in the browser.
+  # Settings not listed here stay however the browser has them.
   preferences = pkgs.writeText "helium-preferences.json" (builtins.toJSON {
     helium = {
       completed_onboarding = true;
@@ -69,9 +69,17 @@ in
     };
   };
 
-  home.activation.seedHeliumPreferences = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  # Helium rewrites Preferences when it quits, so an edit made while it runs would be lost.
+  home.activation.heliumPreferences = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     prefs="$HOME/${profile}/Default/Preferences"
-    if [[ ! -e "$prefs" ]]; then
+    if /usr/bin/pgrep -xq Helium; then
+      warnEcho "Helium is running, so its settings weren't applied. Quit Helium and run ./rebuild.sh again."
+    elif [[ -e "$prefs" ]]; then
+      merged="$(mktemp)"
+      ${pkgs.jq}/bin/jq -s '.[0] * .[1]' "$prefs" ${preferences} > "$merged"
+      run install -m 600 "$merged" "$prefs"
+      rm -f "$merged"
+    else
       run mkdir -p "$(dirname "$prefs")"
       run install -m 600 ${preferences} "$prefs"
     fi
