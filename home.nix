@@ -99,6 +99,10 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/wezterm";
   home.file.".config/nvim".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/nvim";
+  # The whole directory, not settings.json alone, so Tinycast's saves land in the repo
+  # even if it replaces the file rather than writing through a file symlink.
+  home.file.".config/tinycast".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/tinycast";
   home.file.".tmux.conf".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.tmux.conf";
   home.file.".claude/settings.json".source =

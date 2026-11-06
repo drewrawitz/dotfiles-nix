@@ -33,6 +33,8 @@
     trackpad.TrackpadRightClick = true;    # two-finger tap to right click
     # System Settings > Menu Bar > "Show menu bar background". nix-darwin has no typed option for it yet.
     CustomUserPreferences.NSGlobalDomain.SLSMenuBarUseBlurredAppearance = true;
+    # Tinycast > Settings > "Sync settings file", so it reads ~/.config/tinycast/settings.json (linked in home.nix).
+    CustomUserPreferences."com.tinycast.app".settingsFileEnabled = true;
   };
   # Mission Control mouse shortcuts: button 5 = Mission Control (id 38), button 4 = Application windows (id 39).
   # Spotlight's cmd+space (id 64) is off so Tinycast can have it.
