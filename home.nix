@@ -25,6 +25,7 @@ in
     google-cloud-sdk  # gcloud, bundles its own python
     fnm       # node version manager
     pnpm      # node package manager
+    skillshare  # syncs agent skills across AI CLIs (from the skillshare flake's overlay)
   ];
   home.sessionVariables.EDITOR = "nvim";
   home.sessionPath = [ "$HOME/.local/bin" ];

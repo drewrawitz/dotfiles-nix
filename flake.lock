@@ -99,7 +99,28 @@
         "home-manager": "home-manager",
         "nix-darwin": "nix-darwin",
         "nix-homebrew": "nix-homebrew",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs": "nixpkgs",
+        "skillshare": "skillshare"
+      }
+    },
+    "skillshare": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1793981012,
+        "narHash": "sha256-jzaLWIuJXyaPCT3WgvACmNVNFwHAqS2Eveq83dWi2zU=",
+        "owner": "runkids",
+        "repo": "skillshare",
+        "rev": "3318c9944dbf93a5ce9f854ace8e0f12d062c9ac",
+        "type": "github"
+      },
+      "original": {
+        "owner": "runkids",
+        "repo": "skillshare",
+        "type": "github"
       }
     }
   },
