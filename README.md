@@ -23,7 +23,7 @@ If you find a bug, please open a GitHub Issue using the bug report template.
 
 Running the switch builds:
 
-- System settings (dark mode, key repeat, dock, Finder, trackpad)
+- System settings (dark mode, key repeat, dock, Finder, trackpad, Touch ID for sudo)
 - Homebrew apps (casks and CLI tools)
 - Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tree-sitter, tmux, zoxide, gh, fnm, pnpm)
 - Hack Nerd Font, installed system-wide

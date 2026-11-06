@@ -60,6 +60,12 @@
     remapCapsLockToEscape = true;
   };
 
+  # Touch ID for sudo, in tmux too (reattach), via /etc/pam.d/sudo_local, which survives macOS updates.
+  security.pam.services.sudo_local = {
+    touchIdAuth = true;
+    reattach = true;
+  };
+
   # The font everything renders in. Installed system-wide, not through home-manager,
   # because fontd starts at login and never watches ~/Library/Fonts if the first switch
   # is what creates it, so WezTerm can't find the font on a new Mac. /Library/Fonts always exists.
