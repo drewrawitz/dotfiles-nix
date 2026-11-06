@@ -1,4 +1,4 @@
-{ user, ... }:
+{ pkgs, user, ... }:
 
 {
   # Determinate already manages the Nix daemon, so nix-darwin shouldn't.
@@ -59,6 +59,11 @@
     enableKeyMapping = true;
     remapCapsLockToEscape = true;
   };
+
+  # The font everything renders in. Installed system-wide, not through home-manager,
+  # because fontd starts at login and never watches ~/Library/Fonts if the first switch
+  # is what creates it, so WezTerm can't find the font on a new Mac. /Library/Fonts always exists.
+  fonts.packages = [ pkgs.nerd-fonts.hack ];
 
   # Cloudflare DNS instead of whatever the router hands out; macOS upgrades it to encrypted DNS.
   # Services missing on a machine are skipped (see `networksetup -listallnetworkservices`).

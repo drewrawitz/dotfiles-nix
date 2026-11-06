@@ -25,7 +25,8 @@ Running the switch builds:
 
 - System settings (dark mode, key repeat, dock, Finder, trackpad)
 - Homebrew apps (casks and CLI tools)
-- Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tree-sitter, tmux, zoxide, gh, fnm, pnpm, Hack Nerd Font)
+- Nix user packages (ripgrep, fd, fzf, jq, lazygit, Neovim, tree-sitter, tmux, zoxide, gh, fnm, pnpm)
+- Hack Nerd Font, installed system-wide
 - Node LTS via fnm as the default Node, if none is set yet
 - Shell (zsh, aliases, powerlevel10k prompt)
 - Editor (Neovim running the [LazyVim](https://www.lazyvim.org) starter with the Catppuccin Mocha theme)

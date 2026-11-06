@@ -25,10 +25,7 @@ in
     google-cloud-sdk  # gcloud, bundles its own python
     fnm       # node version manager
     pnpm      # node package manager
-    # the font everything renders in
-    nerd-fonts.hack
   ];
-  fonts.fontconfig.enable = true;
   home.sessionVariables.EDITOR = "nvim";
   home.sessionPath = [ "$HOME/.local/bin" ];
 
