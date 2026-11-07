@@ -164,6 +164,10 @@ Neovim and WezTerm both use the Catppuccin Mocha theme.
 
 The powerlevel10k prompt lives in `home/.p10k.zsh`, so `p10k configure` saves straight into the repo.
 
+Herdr's keybinds (`home/.config/herdr-app/keys.json`) mirror the tmux ones: `ctrl-a` prefix, and `ctrl-h/j/k/l` across Herdr panes and Neovim splits via the `pane-nav` mod.
+That mod only gets keys while the Shepherdr layout (`~/.config/herdr-app/layouts/shepherdr.json`, not in this repo) has a 0px `pane-nav` block; re-add it if a Shepherdr update drops it.
+Herdr only watches its own folder, so after editing these files run `touch -h ~/.config/herdr-app/keys.json` (or the mod folder), or restart Herdr.
+
 Every rebuild merges the Helium settings in `helium.nix` into Helium's profile, so they win over changes made in the browser.
 Quit Helium before rebuilding: it rewrites its settings when it quits, so the rebuild skips them and warns you if Helium is open.
 Add a Web Store id to `helium.nix` and Helium installs that extension on its next launch.

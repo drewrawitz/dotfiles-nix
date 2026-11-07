@@ -109,6 +109,16 @@ in
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.p10k.zsh";
   home.file.".tmux.conf".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.tmux.conf";
+  # Herdr writes a default keys.json whenever it finds none (first launch, or the moment the old
+  # file is moved away), so force lets activation replace that copy with the link.
+  # Herdr only watches its own folder, so after editing these in the repo, nudge it:
+  # `touch -h ~/.config/herdr-app/keys.json` (or the mod folder), or restart Herdr.
+  home.file.".config/herdr-app/keys.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr-app/keys.json";
+    force = true;
+  };
+  home.file.".config/herdr-app/mods/pane-nav".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr-app/mods/pane-nav";
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
 

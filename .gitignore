@@ -5,3 +5,7 @@ result-*
 
 # no-mistakes local validation state - never commit in this public repo
 .no-mistakes/
+
+# Herdr writes these API typings into every mod folder it loads
+home/.config/herdr-app/mods/*/gpui-kit.d.ts
+home/.config/herdr-app/mods/*/jsconfig.json
