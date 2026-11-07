@@ -4,7 +4,8 @@
 // home/.config/nvim/lua/plugins/tmux-navigator.lua in the dotfiles repo).
 // Bound in keys.json as "ctrl-h": "pane-nav.left".
 //
-// Commands only reach a shown copy, so the layout keeps a 0px block of this mod (id "pane-nav").
+// Commands only reach a shown copy, so the layout keeps a 0px block of this mod (id "pane-nav"):
+// see layouts/main-nav.json.
 
 import { View, div } from "gpui-kit";
 import { exec, focused, hc, home, nextCommand, panes, run } from "herdr";

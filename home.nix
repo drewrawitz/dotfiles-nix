@@ -119,6 +119,11 @@ in
   };
   home.file.".config/herdr-app/mods/pane-nav".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr-app/mods/pane-nav";
+  # Herdr's `main` layout plus a hidden 0px `pane-nav` block, which the mod needs to get its keys.
+  home.file.".config/herdr-app/layouts/main-nav.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.config/herdr-app/layouts/main-nav.json";
+    force = true;
+  };
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
 

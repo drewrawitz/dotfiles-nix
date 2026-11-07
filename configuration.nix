@@ -92,7 +92,7 @@
     ];
     brews = [
       "mole"            # mac cleaner (nixpkgs' "mole" is an unrelated ssh tool)
-      "oven-sh/bun/bun" # runs Shepherdr's herdr service; nixpkgs' bun is too old for its lockfile
+      "oven-sh/bun/bun" # from bun's own tap, since nixpkgs' bun lags behind
     ];
     casks = [
       "wezterm"
