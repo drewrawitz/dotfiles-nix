@@ -88,9 +88,11 @@
     taps = [
       "abue-ammar/tinycast"
       "anomalyco/tap"
+      "oven-sh/bun"
     ];
     brews = [
       "mole"            # mac cleaner (nixpkgs' "mole" is an unrelated ssh tool)
+      "oven-sh/bun/bun" # runs Shepherdr's herdr service; nixpkgs' bun is too old for its lockfile
     ];
     casks = [
       "wezterm"
